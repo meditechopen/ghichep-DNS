@@ -84,12 +84,7 @@ DNS tổ chức theo mô hình CSDL phân tán lưu trữ các bản ghi tài ng
 | RD | 1 bit | 1: tiếp tục truy vấn đệ quy |
 | RA | 1 bit | 1: truy vấn được thực thi trên server |
 | Z |  3 bits | Đặt bằng 0 để dành |
-| RCode | 4 bits | - 0: lỗi truy vấn
-- 1: lỗi định dạng gói tin
-- 2:server trục trặc
-- 3: lỗi tên
-- 4: không thể thi hành
-- 5: server từ chối thực thi |
+| RCode | 4 bits | 0: lỗi truy vấn, 1: lỗi định dạng gói tin, 2:server trục trặc, 3: lỗi tên, 4: không thể thi hành, 5: server từ chối thực thi |
 
 - **number of questions** : số lần truy vấn của một gói tin trong một vấn đề
 - **number of answer RRs** : số tài nguyên tham gia trong phần trả lời 
