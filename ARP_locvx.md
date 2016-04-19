@@ -32,7 +32,7 @@ Xem thêm tại [IANA-TLD](http://www.iana.org/domains/root/db)
 Mỗi máy tính phải đăng ký tới một Authoritative name server. Thông thường authoritative name server của một máy tính là name server trong miền [ISP](https://vi.wikipedia.org/wiki/Nh%C3%A0_cung_c%E1%BA%A5p_d%E1%BB%8Bch_v%E1%BB%A5_Internet) của máy tính đó.
 
 
-#### Local Name Server
+#### d. Local Name Server
 Không nhất thiết phải thuộc hệ thống phân cấp
 
 Mỗi ISP có một Local Name Server (default name server)
@@ -84,7 +84,12 @@ DNS tổ chức theo mô hình CSDL phân tán lưu trữ các bản ghi tài ng
 | RD | 1 bit | 1: tiếp tục truy vấn đệ quy |
 | RA | 1 bit | 1: truy vấn được thực thi trên server |
 | Z |  3 bits | Đặt bằng 0 để dành |
-| RCode | 4 bits | 0: lỗi truy vấn, 1: lỗi định dạng gói tin, 2:server trục trặc, 3: lỗi tên, 4: không thể thi hành, 5: server từ chối thực thi |
+| RCode | 4 bits | - 0: lỗi truy vấn
+- 1: lỗi định dạng gói tin
+- 2:server trục trặc
+- 3: lỗi tên
+- 4: không thể thi hành
+- 5: server từ chối thực thi |
 
 - **number of questions** : số lần truy vấn của một gói tin trong một vấn đề
 - **number of answer RRs** : số tài nguyên tham gia trong phần trả lời 
@@ -92,13 +97,13 @@ DNS tổ chức theo mô hình CSDL phân tán lưu trữ các bản ghi tài ng
 - **number of additional RRs** : lượng tài nguyên được ghi lại trong phần thêm vào của gói tin
 
 ##### Question section 
-	Chứa thông tin về truy vấn được tạo ra, bao gồm tên và kiểu trường cho truy vấn.
+Chứa thông tin về truy vấn được tạo ra, bao gồm tên và kiểu trường cho truy vấn.
 
 ##### Answers section 
-	Chứa các Resource Record cho câu trả lời truy vấn.
+Chứa các Resource Record cho câu trả lời truy vấn.
 
 ##### Authority section 
-	Chứa các bản ghi của server có thẩm quyền.
+Chứa các bản ghi của server có thẩm quyền.
 
 ##### Additional section
 Các thông tin mở rộng có thể được dùng. 
