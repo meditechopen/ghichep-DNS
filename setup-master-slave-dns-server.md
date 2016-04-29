@@ -96,14 +96,14 @@ cat /etc/redhat-release
 - Dưới đây là file named.conf của tôi.
 ```sh
 options {
-	listen-on port 53 { <strong style="color: yellow;">127.0.0.1; 192.168.10.1</strong>; }; # add IP của DNS server
+	listen-on port 53 { 127.0.0.1; 192.168.10.1; }; # add IP của DNS server
 	listen-on-v6 port 53 { none; };
 	directory 	"/var/named";
 	dump-file 	"/var/named/data/cache_dump.db";
         statistics-file "/var/named/data/named_stats.txt";
         memstatistics-file "/var/named/data/named_mem_stats.txt";
 	allow-query     { localhost; 192.168.10.0/24; };
-    <strong style="color: yellow;">recursion no</strong>;
+	recursion no;
 	
 	dnssec-enable yes;
 	dnssec-validation yes;
@@ -127,14 +127,14 @@ zone "." IN {
 };
 
 ## Define our forward & reverse Zone file here for lamtlu.com
-zone "<strong style="color: yellow;">lamtlu.com</strong>" IN{
+zone "lamtlu.com" IN{
 		type master;
-		file "<strong style="color: yellow;">lamtlu.forward</strong>";
+		file "lamtlu.forward;
 		allow-update {none; };
 	};
-zone "<strong style="color: yellow;">10.168.192.in-addr.arpa</strong>" IN{
+zone "10.168.192.in-addr.arpa" IN{
 		type master;
-		file "<strong style="color: yellow;">lamtlu.reverse</strong>";
+		file "lamtlu.reverse";
 		allow-update {none; };
 	};
 
@@ -309,13 +309,13 @@ vi /etc/named.conf
 - Thêm thay đổi theo ý của bạn, dưới đây là file conf của tôi.
 ```sh
 options {
-	listen-on port 53 { <strong style="color: yellow;">127.0.0.1; 192.168.10.2</strong>}; #Add ip của slave
+	listen-on port 53 { 127.0.0.1; 192.168.10.2}; #Add ip của slave
 	listen-on-v6 port 53 { ::1; };
 	directory 	"/var/named";
 	dump-file 	"/var/named/data/cache_dump.db";
         statistics-file "/var/named/data/named_stats.txt";
         memstatistics-file "/var/named/data/named_mem_stats.txt";
-	allow-query     { <strong style="color: yellow;">192.168.100.0/24</strong>; };
+	allow-query     { 192.168.100.0/24; };
 	recursion no;
 
 	dnssec-enable yes;
@@ -342,16 +342,16 @@ zone "." IN {
 
 ## Define our slave forward and reverse zone, Zone files are replicated from master.
 
-zone"<strong style="color: yellow;">lamtlu.com</strong>" IN {
+zone"lamtlu.com" IN {
 type slave;
-file "<strong style="color: yellow;">slaves/lamtlu.forward.slave</strong>";
-masters { <strong style="color: yellow;">192.168.10.1</strong>; };
+file "slaves/lamtlu.forward.slave";
+masters {192.168.10.1; };
 };
 
-zone"<strong style="color: yellow;">0.168.192.in-addr.arpa</strong>" IN {
+zone"0.168.192.in-addr.arpa" IN {
 type slave;
-file "<strong style="color: yellow;">slaves/lamtlu.reverse.slave</strong>";
-masters { <strong style="color: yellow;">192.168.10.1</strong>; };
+file "slaves/lamtlu.reverse.slave";
+masters { 192.168.10.1; };
 };
 
 #####
